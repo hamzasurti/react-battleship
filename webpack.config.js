@@ -1,6 +1,8 @@
+const path = require('path')
 module.exports = {
   entry: "./components/app.js",
   output: {
+    path: path.join(__dirname, 'client/'),
     filename: "bundle.js"
   },
   watch: true,
