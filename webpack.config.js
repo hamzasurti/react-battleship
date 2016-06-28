@@ -1,24 +1,36 @@
-const path = require('path')
+const path = require('path');
+const webpack = require('webpack');
+
+const devFlagPlugin = new webpack.DefinePlugin({
+  __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false')),
+});
+
 module.exports = {
-  entry: "./components/app.js",
+  entry: [
+    'webpack-dev-server/client?http://localhost:3000',
+    'webpack/hot/only-dev-server',
+    './src/index.js',
+  ],
   output: {
     path: path.join(__dirname, 'client/'),
-    filename: "bundle.js"
+    filename: 'bundle.js',
   },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
+    devFlagPlugin,
+  ],
   watch: true,
   module: {
-  loaders: [
-    {
-      test: /\.es6$/,
-      exclude: /node_modules/,
-      loader: 'babel-loader',
-      query: {
-        presets: ['react', 'es2015']
-      }
-    }
-  ]
-},
-resolve: {
-  extensions: ['', '.js', '.es6']
-},
-}
+    loaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loaders: ['react-hot', 'babel'],
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['', '.js', '.es6'],
+  },
+};

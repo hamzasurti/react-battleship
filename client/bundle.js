@@ -42,6 +42,15 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(1);
+	(function webpackMissingModule() { throw new Error("Cannot find module \"dev\""); }());
+	(function webpackMissingModule() { throw new Error("Cannot find module \"server\""); }());
+
+
+/***/ },
+/* 1 */
 /***/ function(module, exports) {
 
 	console.log('hello jared')
