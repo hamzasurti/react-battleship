@@ -1,5 +1,6 @@
-import express from 'express';
-import path from 'path';
+const express = require('express')
+const app = express()
+const path = require('path')
 
 let app = express();
 
@@ -8,5 +9,5 @@ app.get('/', (req,res) => {
 })
 
 app.listen(3000, () => {
-  console.log(listening on port 3000);
+  console.log('listening on port 3000');
 })
