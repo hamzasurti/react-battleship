@@ -20,6 +20,7 @@ module.exports = {
     new webpack.NoErrorsPlugin(),
     devFlagPlugin,
   ],
+  devtool: 'source-map',
   watch: true,
   module: {
     loaders: [
