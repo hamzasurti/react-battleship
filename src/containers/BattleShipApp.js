@@ -13,10 +13,8 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log('state',state.cells);
-
   return {
-    cells: state.cells,
+    cells: state.hits,
   };
 };
 

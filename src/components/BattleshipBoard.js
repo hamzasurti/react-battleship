@@ -4,10 +4,10 @@ import Row from './Row';
 const letterArr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
 
 const Battleship = ({ cells, onCellClick }) => {
-  console.log('cells',cells);
   const columns = [];
   for (let i = 0; i < 10; i++) {
     columns.push(<Row key={letterArr[i]} id={letterArr[i]}
+      cells={cells}
       onClick={(e) => onCellClick(e)}
       />);
   }
@@ -20,7 +20,7 @@ const Battleship = ({ cells, onCellClick }) => {
 
 Battleship.propTypes = {
   cells: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     hit: PropTypes.bool.isRequired,
   }).isRequired).isRequired,
   onCellClick: PropTypes.func.isRequired,
