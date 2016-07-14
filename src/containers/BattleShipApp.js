@@ -1,16 +1,28 @@
-import React from 'react';
-import Row from './../components/row';
+import { hitSpot } from '../actions';
+import { connect } from 'react-redux'
+import Battleship from '../components/BattleshipBoard';
 
-const Battleship = () => {
-  const columns = [];
-  for (let i = 0; i < 10; i++) {
-    columns.push(<Row />);
-  }
-  return (
-    <div className="board" >
-    {columns}
-    </div>
-  );
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onCellClick: (e) => {
+      dispatch(hitSpot(e));
+      // console.log('hello',e);
+    },
+  };
 };
 
-export default Battleship;
+const mapStateToProps = (state) => {
+  console.log('state',state.cells);
+
+  return {
+    cells: state.cells,
+  };
+};
+
+const BattleshipApp = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Battleship);
+
+export default BattleshipApp;

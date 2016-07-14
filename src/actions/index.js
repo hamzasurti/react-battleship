@@ -22,3 +22,12 @@ export const toggleTodo = (id) => {
     id
   }
 }
+
+export const hitSpot = (id) => {
+  console.log(id._targetInst._nativeNode.id);
+  const theId = id._targetInst._nativeNode.id;
+  return {
+    type: 'HIT_SPOT',
+    id: theId,
+  };
+};

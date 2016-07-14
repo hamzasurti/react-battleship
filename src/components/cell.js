@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const Cell = ({ onClick, hit }) => (
+const Cell = ({ onClick, hit, id }) => (
 
   <div
     className="box"
@@ -8,6 +8,7 @@ const Cell = ({ onClick, hit }) => (
     style={{
       backgroundColor: hit ? 'red' : 'white',
     }}
+    id={id}
   >
   </div>
 );
