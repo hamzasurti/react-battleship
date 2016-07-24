@@ -1,18 +1,13 @@
 import React, { PropTypes } from 'react';
 
 const Cell = ({ onClick, cells, id }) => {
-  let color;
-  for (var i = 0; i < cells.length; i++) {
-
-    if (cells[i].id===id) {color = true}
-  }
   return (
 
   <div
     className="box"
     onClick={onClick}
     style={{
-      backgroundColor: color ? 'red' : 'white',
+      backgroundColor: cells ? 'red' : 'white',
     }}
     id={id}
   >

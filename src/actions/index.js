@@ -1,7 +1,6 @@
 
 let nextTodoId = 0
 export const addTodo = (text) => {
-  console.log('text', text);
   return {
     type: 'ADD_TODO',
     id: nextTodoId++,
@@ -29,5 +28,6 @@ export const hitSpot = (id) => {
   return {
     type: 'HIT_SPOT',
     id: theId,
+    ship: true,
   };
 };

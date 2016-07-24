@@ -1,13 +1,15 @@
-const hits = (state = [], action) => {
+const hits = (state = {}, action) => {
+  console.log(action);
   switch (action.type) {
     case 'HIT_SPOT':
-      return [
+      return {
         ...state,
+        [action.id]:
         {
           id: action.id,
-          hit: true,
+          hit: action.ship,
         },
-      ];
+      };
     default:
       return state;
   }

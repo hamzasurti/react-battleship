@@ -7,7 +7,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onCellClick: (e) => {
       dispatch(hitSpot(e));
-      // console.log('hello',e);
     },
   };
 };
