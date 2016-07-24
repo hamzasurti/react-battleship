@@ -9,7 +9,6 @@ const App = () => (
   <div>
     <h1>Battleship</h1>
     <BattleShipApp />
-    <BattleShipApp />
     <AddTodo />
     <VisibleTodoList />
     <Footer />
@@ -17,4 +16,5 @@ const App = () => (
   </div>
 );
 
+// <BattleShipApp />
 export default App;

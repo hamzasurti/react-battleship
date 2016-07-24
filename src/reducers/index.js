@@ -10,9 +10,4 @@ const todoApp = combineReducers({
   hits,
 });
 
-// const combineReducers = combineReducers({
-// });
-
 export default todoApp;
-
-// export default battleShipReducers;
