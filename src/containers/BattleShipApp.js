@@ -13,7 +13,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
   return {
-    cells: state.hits,
+    cells: state.boardElements,
   };
 };
 

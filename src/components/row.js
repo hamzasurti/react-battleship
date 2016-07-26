@@ -4,11 +4,12 @@ import Cell from './cell';
 const Row = ({ id, cells, onClick }) => {
   const row = [];
   for (let i = 0; i < 10; i++) {
+    const cellKey = id.concat(i + 1);
     row.push(<Cell
-      key={id.concat(i + 1)}
+      key={cellKey}
       onClick={onClick}
-      id={id.concat(i + 1)}
-      cells={cells[id.concat(i + 1)] ? cells[id.concat(i + 1)] : undefined}
+      id={cellKey}
+      cells={cells[cellKey] ? cells[cellKey] : undefined}
     />);
   }
   return (
