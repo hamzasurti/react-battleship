@@ -1,13 +1,13 @@
 import { combineReducers } from 'redux';
 import todos from './todos';
 import visibilityFilter from './visibilityFilter';
-import hits from './hits';
+import boardElements from './boardElements';
 
 
 const todoApp = combineReducers({
   todos,
   visibilityFilter,
-  hits,
+  boardElements,
 });
 
 export default todoApp;

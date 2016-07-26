@@ -31,3 +31,10 @@ export const hitSpot = (id) => {
     ship: true,
   };
 };
+
+export const addNextShip = (text) => {
+  return {
+    type: 'ADD_SHIP',
+    text,
+  }
+}
