@@ -1,9 +1,8 @@
 import React from 'react';
 import BattleShipApp from '../containers/BattleShipApp';
 import AvailableShips from '../containers/AvailableShips';
-import AddTodo from '../containers/AddTodo';
-import VisibleTodoList from '../containers/VisibleTodoList';
-import Footer from './Footer';
+// import EnemyBoard from '../containers/EnemyBoard';
+
 
 
 const App = () => (
@@ -11,12 +10,8 @@ const App = () => (
     <h1>Battleship</h1>
     <BattleShipApp />
     <AvailableShips />
-    <AddTodo />
-    <VisibleTodoList />
-    <Footer />
-
   </div>
 );
 
-// <BattleShipApp />
+// <EnemyBoard />
 export default App;

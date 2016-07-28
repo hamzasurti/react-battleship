@@ -1,27 +1,29 @@
 import React, { PropTypes } from 'react';
 
-const Cell = ({ onClick, cells, id }) => {
-  let color = '';
-  console.log(cells);
+const colorCell = (cells) => {
   if (cells) {
-
-    if (cells.ship && cells.attacked) color = 'red';
-    else if (cells.ship && !cells.attacked) color = 'black';
-    else if (cells.attacked && !cells.ship) color = 'gray'
-    else color = 'white';
+    if (cells.ship && cells.attacked) return 'red';
+    // if (cells.ship && !cells.attacked) return 'black';
+    if (cells.attacked && !cells.ship) return 'gray';
   }
-  return (
+  return 'white';
+};
 
-  <div
-    className="box"
-    onClick={onClick}
-    style={{
-      backgroundColor: color,
-    }}
-    id={id}
-  >
-  </div>
-)};
+const Cell = ({ onClick, cells, id }) => {
+  const color = colorCell(cells);
+  return (
+    <div
+      className="box"
+      onClick={onClick}
+      style={{
+        backgroundColor: color,
+      }}
+      id={id}
+    >
+    </div>
+  );
+};
+
 
 Cell.propTypes = {
   cells: PropTypes.arrayOf(PropTypes.shape({

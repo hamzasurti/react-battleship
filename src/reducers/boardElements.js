@@ -1,5 +1,4 @@
 const boardElements = (state = {}, action) => {
-  console.log(state.A8);
   switch (action.type) {
     case 'HIT_SPOT':
       return {
@@ -16,16 +15,24 @@ const boardElements = (state = {}, action) => {
   }
 };
 
+let hits = 0;
+
 const checkShip = (state, action) => {
+
   if (action.id in state && state[action.id].ship === true) {
+    hits++
+    if (hits === 16) alert('you win')
     return {
       [action.id]:
       {
         id: action.id,
         ship: true,
         attacked: true,
+        // hits,
       },
     }
+  } else if (action.id in state && state[action.id].ship === false) {
+    return
   } else {
       return {
         [action.id]:
@@ -33,6 +40,7 @@ const checkShip = (state, action) => {
           id: action.id,
           ship: false,
           attacked: true,
+          // hits,
         },
       }
   }
