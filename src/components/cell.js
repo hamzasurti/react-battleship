@@ -25,12 +25,5 @@ const Cell = ({ onClick, cells, id }) => {
 };
 
 
-Cell.propTypes = {
-  cells: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    hit: PropTypes.bool.isRequired,
-  }).isRequired).isRequired,
-  onClick: PropTypes.func.isRequired,
-};
 
 export default Cell;
