@@ -1,8 +1,8 @@
 import expect from 'expect'
 import * as actions from '../../src/actions'
 
-describe('addship actions', () => {
-  it('addship', () => {
+describe('actions', () => {
+  it('addship should send a addships action', () => {
     expect(actions.addNextShip('ship')).toEqual({
       type: 'ADD_SHIP',
       text:'ship',
