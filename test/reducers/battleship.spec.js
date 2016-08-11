@@ -1,24 +1,26 @@
 import expect from 'expect'
-import todos from '../../reducers/todos'
+import boardElements from '../../src/reducers/boardElements'
 
-describe('todos reducer', () => {
+describe('boardElements reducer', () => {
   it('should handle initial state', () => {
     expect(
-      todos(undefined, {})
-    ).toEqual([])
+      boardElements(undefined, {})
+    ).toEqual({})
   })
 
-  it('should handle ADD_TODO', () => {
+  it('should handle HIT_SPOT', () => {
     expect(
-      todos([], {
-        type: 'ADD_TODO',
-        text: 'Run the tests',
-        id: 0
-      })
-    ).toEqual([
-      {
-        text: 'Run the tests',
-        completed: false,
-        id: 0
-      }
-    ])
+      boardElements({}, {
+      type: 'HIT_SPOT',
+      id: 'A1',
+      ship: false,
+    })
+    ).toEqual({
+      'A1':{
+        id: 'A1',
+        ship: false,
+        attacked: true,
+      },
+    });
+  });
+});

@@ -4,7 +4,8 @@
   "description": "A battlesip game made in react with some redux",
   "main": "index.js",
   "scripts": {
-    "test": "npm test",
+    "test": "NODE_ENV=test mocha --recursive --compilers js:babel-register --require ./test/setup.js",
+    "test:watch": "npm test -- --watch",
     "start": "node server.js ",
     "lint": "./node_modules/.bin/eslint ."
   },
