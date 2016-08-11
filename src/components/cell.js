@@ -14,11 +14,10 @@ const Cell = ({ onClick, cells, id }) => {
   return (
     <div
       className="box"
-      onClick={onClick}
+      onClick={() => onClick(id)}
       style={{
         backgroundColor: color,
       }}
-      id={id}
     >
     </div>
   );

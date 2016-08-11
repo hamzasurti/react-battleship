@@ -1,6 +1,4 @@
-export const hitSpot = (e) => {
-  console.log(e._targetInst._nativeNode.id);
-  const id = e._targetInst._nativeNode.id;
+export const hitSpot = (id) => {
   return {
     type: 'HIT_SPOT',
     id,
