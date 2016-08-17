@@ -5,8 +5,11 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import todoApp from './reducers';
 
-let store = createStore(todoApp);
+// Grab the state from a global injected into server-generated HTML
+const preloadedState = window.__PRELOADED_STATE__
 
+// Create Redux store with initial state
+const store = createStore(todoApp, preloadedState)
 ReactDOM.render(
   <Provider store={store}>
     <App />
