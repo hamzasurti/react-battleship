@@ -1,20 +1,26 @@
 const webpack = require('webpack');
-const WebpackDevServer = require('webpack-dev-server');
+const webpackDevMiddleware = require ('webpack-dev-middleware')
+const webpackHotMiddleware = require('webpack-hot-middleware')
+const webpackConfig = require('./webpack.dev.config.js')
 const config = require('./webpack.dev.config');
 const path = require('path');
 const express = require('express');
 const React = require('react');
 const createStore = require('redux').createStore;
+// todo:put in other file and move server to es6
 require('babel-core/register')({
     presets: ['es2015', 'react']
 });
 const Provider = require('react-redux').Provider;
-const todoApp = require('./src/reducers').todoApp;
-const App = require('./src/components/App').App;
+const todoApp = require('./src/reducers').default;
+const App = require('./src/components/App').default;
 const renderToString = require('react-dom/server').renderToString;
-console.log('renderToString')
 
 const app = express();
+
+const compiler = webpack(webpackConfig)
+app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: webpackConfig.output.publicPath }))
+app.use(webpackHotMiddleware(compiler))
 
 // This is fired every time the server side receives a request
 app.use(handleRender);
@@ -44,7 +50,7 @@ function renderFullPage(html, preloadedState) {
     <!doctype html>
     <html>
       <head>
-        <title>Redux Universal Example</title>
+        <title>Battleship</title>
       </head>
       <body>
         <div id="root">${html}</div>
@@ -57,24 +63,7 @@ function renderFullPage(html, preloadedState) {
     `
 }
 
-if (process.env.NODE_ENV !== 'production') {
-  new WebpackDevServer(webpack(config), {
-    publicPath: config.output.publicPath,
-    hot: true,
-    historyApiFallback: true,
-  }).listen(3000, 'localhost', (err) => {
-    if (err) {
-      return console.log(err);
-    }
-    console.log('Listening at http://localhost:3000/');
-  });
-} else {
-  const indexPath = path.join(__dirname, './index.html');
-  const publicPath = express.static(path.join(__dirname, './client'));
+delete process.env.BROWSER;
 
-  app.use('/public', publicPath);
-  app.get('/', function (_, res) { res.sendFile(indexPath); });
   app.listen(3000);
   console.log('Listening at port 3000');
-}
-

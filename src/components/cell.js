@@ -16,6 +16,11 @@ const Cell = ({ onClick, cells, id }) => {
       onClick={() => onClick(id)}
       style={{
         backgroundColor: color,
+        border: '1px solid',
+        height: '15px',
+        width: '15px',
+        textAlign: 'center',
+        display:'inline-block',
       }}
     >
     </div>

@@ -9,7 +9,7 @@ const Row = ({ id, cells, onClick }) => {
       key={cellKey}
       onClick={onClick}
       id={cellKey}
-      cells={cells[cellKey] ? cells[cellKey] : undefined}
+      cells={cells[cellKey] ? cells[cellKey] : undefined }      
     />);
   }
   return (
