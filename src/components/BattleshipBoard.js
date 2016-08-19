@@ -8,14 +8,22 @@ const Battleship = ({ cells, onCellClick }) => {
   for (let i = 0; i < 10; i++) {
     columns.push(
       <Row
+        style={{ height: '15px !important', color: 'blue' }}
         key={letterArr[i]}
         id={letterArr[i]}
         cells={cells}
-        onClick={(e) => onCellClick(e)}
+        onClick={onCellClick}
+
       />);
   }
   return (
-    <div className="board" >
+    <div 
+    className="board"
+    style={{
+      display: 'inline-block!important',
+      width: '50%',
+    }} 
+    >
     {columns}
     </div>
   );

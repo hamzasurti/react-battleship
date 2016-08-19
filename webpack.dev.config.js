@@ -1,26 +1,26 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const devFlagPlugin = new webpack.DefinePlugin({
-  __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false')),
-});
-
 module.exports = {
   entry: [
-    'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/only-dev-server',
+    'webpack-hot-middleware/client',
     './src/index.js',
   ],
   output: {
     path: path.join(__dirname, 'client/'),
     filename: 'bundle.js',
+    publicPath: '/static/',
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-    devFlagPlugin,
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.DefinePlugin({
+      "process.env": {
+          BROWSER: JSON.stringify(true)
+      }
+    })
   ],
-  devtool: 'source-map',
+  devtool: 'inline-source-map',
   watch: true,
   module: {
     loaders: [
